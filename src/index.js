@@ -14,7 +14,7 @@ const pizzaReducer = (state = [], action) => {
     }else if (action.type === 'REMOVE_PIZZA'){
         console.log('pizzaReducer, subtract', action);
         let  pizzaToDelete = action.payload;
-        const matchPizza = pizza => pizza._id !== pizzaToDelete.id;
+        const matchPizza = pizza => pizza._id !== pizzaToDelete._id;
         return state.filter(matchPizza);
     }else if (action.type === 'REMOVE_ALL_PIZZA'){
         console.log('pizzaReducer, subtract all', action);
