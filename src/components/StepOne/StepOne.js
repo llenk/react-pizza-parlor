@@ -30,12 +30,11 @@ class StepOne extends Component {
         return (
             <div>
                 <h3> Step 1: Select your Pizza</h3>
-                <ul>
+                <ul className='container'>
                 {this.props.reduxState.pizzaReducer.map(pizza => (
                     <li key={pizza._id}>{pizza.name}{pizza.description}{pizza.cost}</li>
                 ))}
                 </ul>
-                {JSON.stringify(this.props.reduxState)}
 
             </div>
         );
