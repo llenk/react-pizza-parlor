@@ -9,13 +9,11 @@ const mapReduxStateToProps = (reduxState) => (
 
 class StepThree extends Component {
 
-
-
     render() {
         return (
             <div>
                 <h3>Step 3: Checkout</h3>
-                <p>{this.props.reduxState.customerReducer.map((customer, i) => <li key={i}>{customer}</li>)}</p>
+                <p>{this.props.reduxState.customerReducer}</p>
                 <table>
                     <thead>
                         <tr>
@@ -24,10 +22,12 @@ class StepThree extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            {this.props.reduxState.pizzaReducer.map(pizza => <td key={pizza._id}>{pizza.name}</td>)}
-                            {this.props.reduxState.pizzaReducer.map(pizza => <td key={pizza._id}>{pizza.cost}</td>)}
-                        </tr>
+                        {this.props.reduxState.pizzaReducer.map(pizza =>
+                            <tr key={pizza._id}>
+                                <td>{pizza.name}</td>
+                                <td>{pizza.cost}</td>
+                            </tr>
+                        )}
                     </tbody>
                 </table>
             </div>
