@@ -10,6 +10,7 @@ class StepThree extends Component {
             <div>
                 <h3>Step Two: Customer Information</h3>  
                 <CustomerForm />
+                <Link to="/three">Next</Link>
             </div>
         );
     }
