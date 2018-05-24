@@ -11,24 +11,6 @@ class StepThree extends Component {
 
 
 
-
-    addOrderPost = (newOrder) => {
-    axios.post('/api/order', this.props.reduxState)
-        .then((response) => {
-        console.log('api/order post: successful', response);
-        // refresh data from server
-        })
-        .catch((error) => {
-        console.log('post/add gallery item error', error);
-        });
-    }
-
-
-
-
-
-    
-
     render() {
         return (
             <div>
