@@ -8,6 +8,18 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
 const pizzaReducer = (state = [], action) => {
+    if(action.type === 'PIZZA'){
+        console.log('pizzaReducer, add', action);
+        return [...state, action.info]
+    }else if (action.type === 'REMOVE_PIZZA'){
+        console.log('pizzaReducer, subtract', action);
+        let  pizzaToDelete = action.payload;
+        const matchPizza = pizza => pizza.id !== pizzaToDelete.id;
+        return state.filter(matchPizza);
+    }else if (action.type === 'REMOVE_ALL_PIZZA'){
+        console.log('pizzaReducer, subtract all', action);
+        return [];
+    }
     return state;
 }
 
