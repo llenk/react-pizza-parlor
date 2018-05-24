@@ -24,6 +24,13 @@ const pizzaReducer = (state = [], action) => {
 }
 
 const customerReducer = (state = {}, action) =>  {
+    if(action.type === 'ADD_CUSTOMER') {
+        console.log('ADD_CUSTOMER: Successful', action);
+        return action.payload
+    } else if(action.type === 'CLEAR_CUSTOMER') {
+        console.log('CLEAR_CUSTOMER: Successful', action)
+        return {};
+    } 
     return state;
 }
 
