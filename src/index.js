@@ -17,8 +17,9 @@ const customerReducer = (state = {}, action) =>  {
         return action.payload
     } else if(action.type === 'CLEAR_CUSTOMER') {
         console.log('CLEAR_CUSTOMER: Successful', action)
+        return {};
     } 
-    return {};
+    return state;
 }
 
 const storeInstance = createStore(
