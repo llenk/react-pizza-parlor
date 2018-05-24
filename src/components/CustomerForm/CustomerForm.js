@@ -33,6 +33,8 @@ class CustomerForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
+        const action = {type: 'ADD_CUSTOMER', payload: this.state.customer};
+        this.props.dispatch(action);
     };
 
     render() {
@@ -43,12 +45,16 @@ class CustomerForm extends Component {
                 <input onChange={this.handleCustomerChange} placeholder="Street Address" name="street_address" />
                 <input onChange={this.handleCustomerChange} placeholder="City" name="city" />
                 <input onChange={this.handleCustomerChange} placeholder="Zip Code" name="zip" />
+                <br />
+                <input type="submit" value="SUBMIT CUSTOMER" onClick={this.handleSubmit}/>
+            </form>
+            <form>
+            <br />
                 <input type="radio" name="type" value="Pickup" onClick={this.handleTypeClick}/>
                 <label>Pickup</label>
                 <br />
                 <input type="radio" name="type" value="Delivery"/>
                 <label>Delivery</label>
-                <input type="submit" value="SUBMIT INFO" onClick="handSubmit"/>
             </form>
             </div>
         );
