@@ -13,7 +13,7 @@ class StepThree extends Component {
         return (
             <div>
                 <h3>Step 3: Checkout</h3>
-                <p>{this.props.reduxState.customerReducer}</p>
+                <p>{this.props.reduxState.customerReducer.customer}</p>
                 <table>
                     <thead>
                         <tr>
@@ -22,7 +22,7 @@ class StepThree extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.reduxState.pizzaReducer.map(pizza =>
+                        {this.props.reduxState.pizzaReducer.map((pizza) =>
                             <tr key={pizza._id}>
                                 <td>{pizza.name}</td>
                                 <td>{pizza.cost}</td>
