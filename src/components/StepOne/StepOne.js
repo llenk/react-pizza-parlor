@@ -28,15 +28,18 @@ class StepOne extends Component {
 
     render() {
         return (
-            <div>
-                <h3> Step 1: Select your Pizza</h3>
-                <ul className='container'>
+            <span>
+                <h1> Step 1: Select your Pizza</h1>
                 {this.props.reduxState.pizzaReducer.map(pizza => (
-                    <li key={pizza._id}>{pizza.name}{pizza.description}{pizza.cost}</li>
+                    <div key={pizza._id} className='container'>
+                        <h3>{pizza.name}</h3>
+                        <h5>{pizza.description}</h5>
+                        <h4>{pizza.cost}</h4>
+                        <button>Add</button>
+                        <button>Delete</button></div>
                 ))}
-                </ul>
-
-            </div>
+                <Link to="/two">Next</Link>
+            </span>
         );
     }
 

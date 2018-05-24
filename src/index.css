@@ -9,11 +9,10 @@ body {
 }
 
 .container {
-  width: 250px;
-  height: 350px;
+  width: 225px;
+  height: 245px;
   border: 1px solid gray;
   margin: 10px;
-  /* controls my content: image, button, etc. */
   display: flex; 
   flex-direction: column;
   align-items: center;    
