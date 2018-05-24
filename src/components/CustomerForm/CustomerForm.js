@@ -23,13 +23,17 @@ class CustomerForm extends Component {
                 [event.target.name]: event.target.value,
             }
         });
-    }
+    };
 
     handleTypeClick = (event) => {
         this.setState({
             type: event.target.value,
         });
-    }
+    };
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+    };
 
     render() {
         return (
@@ -39,13 +43,12 @@ class CustomerForm extends Component {
                 <input onChange={this.handleCustomerChange} placeholder="Street Address" name="street_address" />
                 <input onChange={this.handleCustomerChange} placeholder="City" name="city" />
                 <input onChange={this.handleCustomerChange} placeholder="Zip Code" name="zip" />
-            </form>
-            <form>
                 <input type="radio" name="type" value="Pickup" onClick={this.handleTypeClick}/>
                 <label>Pickup</label>
+                <br />
                 <input type="radio" name="type" value="Delivery"/>
                 <label>Delivery</label>
-
+                <input type="submit" value="SUBMIT INFO" onClick="handSubmit"/>
             </form>
             </div>
         );
