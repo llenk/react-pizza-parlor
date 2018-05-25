@@ -35,6 +35,11 @@ class StepOne extends Component {
         this.props.dispatch(action);
     }
 
+    removePizza = (pizza) => (event) => {
+        const action = { type: 'REMOVE_PIZZA', payload: pizza};
+        this.props.dispatch(action);
+    }
+
     render() {
         return (
             <span>
@@ -45,7 +50,7 @@ class StepOne extends Component {
                         <h5>{pizza.description}</h5>
                         <h4>{pizza.cost}</h4>
                         <button onClick={this.addPizza(pizza)}>Add</button>
-                        <button>Delete</button></div>
+                        <button onClick={this.removePizza(pizza)}>Delete</button></div>
                 ))}
                 <Link to="/two">Next</Link>
             </span>
