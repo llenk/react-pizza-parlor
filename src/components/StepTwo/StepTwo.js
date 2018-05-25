@@ -38,6 +38,7 @@ class StepTwo extends Component {
         this.props.dispatch(action);
         const actionTwo = {type: this.state.type.toUpperCase()}
         this.props.dispatch(action);
+        console.log(this.props.history);
         this.props.history.push('/three');
     };
 
