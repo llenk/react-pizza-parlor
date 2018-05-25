@@ -9,6 +9,21 @@ const mapReduxStateToProps = (reduxState) => (
 
 class StepThree extends Component {
 
+    handleCheckout = (event) => {
+        let order = {
+            customer: this.props.reduxState.customerReducer,
+            pizza: this.props.reduxState.pizzaReducer,
+            order_total: 30, // TODO: change this when order_total function exists
+            type: "Pickup", // TODO: change this when type reducer exists
+        };
+        axios.post('/api/order', order)
+            .then((response) => {
+                console.log(response.status);
+            }).catch((error) => {
+                console.log(error);
+            })
+    }
+
     render() {
         return (
             <div>
@@ -33,6 +48,7 @@ class StepThree extends Component {
                         ))}
                     </tbody>
                 </table>
+                <button onClick={this.handleCheckout}>Checkout</button>
             </div>
         );
     }
