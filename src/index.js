@@ -10,7 +10,7 @@ import logger from 'redux-logger';
 const pizzaReducer = (state = [], action) => {
     if(action.type === 'PIZZA'){
         console.log('pizzaReducer, add', action);
-        return [...state, ...action.payload]
+        return [...state, action.payload]
     }else if (action.type === 'REMOVE_PIZZA'){
         console.log('pizzaReducer, subtract', action);
         let  pizzaToDelete = action.payload;
@@ -31,6 +31,17 @@ const customerReducer = (state = {}, action) =>  {
         console.log('CLEAR_CUSTOMER: Successful', action)
         return {};
     } 
+    return state;
+}
+
+const deliverPickUpReducer = (state = [], action ) => {
+    if(action.type === 'DELIVERY'){
+        console.log('DELIVERY', action);
+        return action.payload
+    } else if (action.type === 'PICKUP', action){
+    console.log('PICKUP', action);
+    return action.payload
+    }
     return state;
 }
 

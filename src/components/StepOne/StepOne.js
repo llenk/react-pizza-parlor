@@ -11,6 +11,9 @@ const mapReduxStateToProps = (reduxState) => (
 class StepOne extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            pizzaChoices: [],
+            };
     }
 
     componentDidMount(){
@@ -19,24 +22,35 @@ class StepOne extends Component {
 
     getPizza(){
         axios.get('/api/pizza').then((response) => {
-            const action = { type: 'PIZZA', payload: response.data};
-            this.props.dispatch(action);
+            this.setState ({
+                pizzaChoices: response.data
+            })
         }).catch((error) => {
             alert('Pizza is not in the oven');
         })
+    }
+
+    addPizza = (pizza) => (event) => {
+        const action = { type: 'PIZZA', payload: pizza};
+        this.props.dispatch(action);
+    }
+
+    removePizza = (pizza) => (event) => {
+        const action = { type: 'REMOVE_PIZZA', payload: pizza};
+        this.props.dispatch(action);
     }
 
     render() {
         return (
             <span>
                 <h1> Step 1: Select your Pizza</h1>
-                {this.props.reduxState.pizzaReducer.map(pizza => (
+                {this.state.pizzaChoices.map(pizza => (
                     <div key={pizza._id} className='container'>
                         <h3>{pizza.name}</h3>
                         <h5>{pizza.description}</h5>
                         <h4>{pizza.cost}</h4>
-                        <button>Add</button>
-                        <button>Delete</button></div>
+                        <button onClick={this.addPizza(pizza)}>Add</button>
+                        <button onClick={this.removePizza(pizza)}>Delete</button></div>
                 ))}
                 <Link to="/two">Next</Link>
             </span>
