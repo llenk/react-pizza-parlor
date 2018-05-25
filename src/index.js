@@ -34,13 +34,13 @@ const customerReducer = (state = {}, action) =>  {
     return state;
 }
 
-const deliverPickUpReducer = (state = [], action ) => {
+const deliverPickUpReducer = (state = '', action ) => {
     if(action.type === 'DELIVERY'){
         console.log('DELIVERY', action);
-        return action.payload
+        return action.type
     } else if (action.type === 'PICKUP', action){
     console.log('PICKUP', action);
-    return action.payload
+    return action.type
     }
     return state;
 }
@@ -51,6 +51,7 @@ const storeInstance = createStore(
     combineReducers({
         pizzaReducer,
         customerReducer,
+        deliverPickUpReducer,
     }),
     applyMiddleware(logger),
 );

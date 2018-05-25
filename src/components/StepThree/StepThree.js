@@ -22,7 +22,7 @@ class StepThree extends Component {
             customer: this.props.reduxState.customerReducer,
             pizzas: this.props.reduxState.pizzaReducer,
             order_total: this.orderTotal(this.props.reduxState.pizzaReducer),
-            type: "Pickup", // TODO: change this when type reducer exists
+            type: this.props.reduxState.deliverPickUpReducer, 
         };
         console.log(order);
         axios({
