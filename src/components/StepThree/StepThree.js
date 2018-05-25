@@ -13,10 +13,12 @@ class StepThree extends Component {
         return (
             <div>
                 <h3>Step 3: Checkout</h3>
-                {this.props.reduxState.customerReducer.name}
-                {this.props.reduxState.customerReducer.street_address}
-                {this.props.reduxState.customerReducer.city}
-                {this.props.reduxState.customerReducer.zip}
+                <div className="customerInfo">
+                <p>{this.props.reduxState.customerReducer.name}</p>
+                <p>{this.props.reduxState.customerReducer.street_address}</p>
+                <p>{this.props.reduxState.customerReducer.city}</p>
+                <p>{this.props.reduxState.customerReducer.zip}</p>
+                </div>
                 <table>
                     <thead>
                         <tr>
