@@ -34,12 +34,24 @@ const customerReducer = (state = {}, action) =>  {
     return state;
 }
 
+const deliverPickUpReducer = (state = '', action ) => {
+    if(action.type === 'DELIVERY'){
+        console.log('DELIVERY', action);
+        return action.type
+    } else if (action.type === 'PICKUP', action){
+    console.log('PICKUP', action);
+    return action.type
+    }
+    return state;
+}
+
 const storeInstance = createStore(
     // This function is our first reducer
     // reducer is a function that runs every time an action is dispatched
     combineReducers({
         pizzaReducer,
         customerReducer,
+        deliverPickUpReducer,
     }),
     applyMiddleware(logger),
 );
