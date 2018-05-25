@@ -34,6 +34,8 @@ class StepThree extends Component {
         }).catch((error) => {
             console.log(error);
         });
+        this.props.dispatch({type: 'REMOVE_ALL_PIZZA'});
+        this.props.dispatch({type: 'CLEAR_CUSTOMER'});
         this.props.history.push('/');
     }
 
