@@ -1,13 +1,43 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const mapReduxStateToProps = (reduxState) => (
-    {reduxState}
+    { reduxState }
 );
 
 class StepThree extends Component {
+
+    orderTotal = (pizzaArray) => {
+        let tot = 0;
+        for (let i=0; i<pizzaArray.length; i++) {
+            tot += parseInt(pizzaArray[i].cost);
+        }
+        return tot;
+    }
+
+    handleCheckout = (event) => {
+        let order = {
+            customer: this.props.reduxState.customerReducer,
+            pizzas: this.props.reduxState.pizzaReducer,
+            order_total: this.orderTotal(this.props.reduxState.pizzaReducer),
+            type: "Pickup", // TODO: change this when type reducer exists
+        };
+        console.log(order);
+        axios({
+            method: 'POST',
+            url: '/api/order',
+            data: order
+        }).then((response) => {
+            console.log(response.status);
+        }).catch((error) => {
+            console.log(error);
+        });
+        this.props.dispatch({type: 'REMOVE_ALL_PIZZA'});
+        this.props.dispatch({type: 'CLEAR_CUSTOMER'});
+        this.props.history.push('/');
+    }
 
     render() {
         return (
@@ -33,6 +63,7 @@ class StepThree extends Component {
                         ))}
                     </tbody>
                 </table>
+                <button onClick={this.handleCheckout}>Checkout</button>
             </div>
         );
     }
