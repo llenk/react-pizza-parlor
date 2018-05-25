@@ -27,18 +27,15 @@ class StepTwo extends Component {
     };
 
     handleTypeClick = (event) => {
-        this.setState({
-            type: event.target.value,
-        });
+        this.props.dispatch({type: event.target.value.toUpperCase()});
     };
 
     handleSubmit = (event) => {
         event.preventDefault();
         const action = {type: 'ADD_CUSTOMER', payload: this.state.customer};
         this.props.dispatch(action);
-        const actionTwo = {type: this.state.type.toUpperCase()}
-        this.props.dispatch(action);
-        console.log(this.props.history);
+        // const actionTwo = {type: this.state.type.toUpperCase()}
+        // this.props.dispatch(actionTwo);
         this.props.history.push('/three');
     };
 
@@ -56,7 +53,7 @@ class StepTwo extends Component {
                 <input type="radio" name="type" value="Pickup" onClick={this.handleTypeClick}/>
                 <label>Pickup</label>
                 <br />
-                <input type="radio" name="type" value="Delivery"/>
+                <input type="radio" name="type" value="Delivery" onClick={this.handleTypeClick}/>
                 <label>Delivery</label>
             </form>
             <button onClick={this.handleSubmit}>Next</button>
