@@ -20,7 +20,7 @@ class StepThree extends Component {
     handleCheckout = (event) => {
         let order = {
             customer: this.props.reduxState.customerReducer,
-            pizza: this.props.reduxState.pizzaReducer,
+            pizzas: this.props.reduxState.pizzaReducer,
             order_total: this.orderTotal(this.props.reduxState.pizzaReducer),
             type: "Pickup", // TODO: change this when type reducer exists
         };
